@@ -1,33 +1,63 @@
-# MONO
 
-## Getting Started
+---
 
-1. **Install dependencies:**
+# MONO – Creative Agency Portfolio Template (Next.js + Tailwind CSS)
+
+**MONO** is a stylish and modern portfolio template built with **Next.js** and **Tailwind CSS**. Ideal for creative agencies, freelancers, and designers who want a bold, professional online presence.
+
+🔗 **Live Demo & Details:** [aniq-ui.com MONO Template](https://www.aniq-ui.com/en/templates/creative-agency-portfolio-nextjs-template)
+
+## 🚀 Getting Started
+
+To get started locally:
+
+1. **Install dependencies**
+
    ```sh
    yarn install
    ```
 
-2. **Run the development server:**
+2. **Start the development server**
+
    ```sh
    yarn dev
    ```
-   Open [http://localhost:3000](http://localhost:3000) to view the app in your browser.
 
-3. **Build and start for production:**
+   Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+3. **Build for production**
+
    ```sh
    yarn build
    yarn start
    ```
 
-## Project Structure
+## 🧠 Project Structure
 
-- `src/` – Application source code
-- `public/` – Static assets
-- `.next/` – Next.js build output
+```
+├── public/          # Static assets (images, fonts, etc.)
+├── src/             # Source code
+│   ├── components/  # Reusable UI components
+│   ├── pages/       # Next.js pages
+│   ├── styles/      # Tailwind & custom styles
+│   └── lib/         # Utilities and helpers
+└── .next/           # Build output (auto-generated)
+```
 
-## Support
+## 🌟 Features
 
-If you have any questions or need assistance, please contact our support team.
+* ✨ Built with Next.js and Tailwind CSS
+* 🎭 Bold, minimal design
+* 🖼️ Optimized for showcasing portfolios
+* 📱 Fully responsive and mobile-ready
+* 🔄 Easy to customize and scale
+
+## 💬 Support
+
+For questions or support, contact the [Aniq UI team](https://www.aniq-ui.com/#contact).
 
 ---
-Enjoy your new project!
+
+Created by [Aniq UI](https://www.aniq-ui.com) — Premium Next.js Templates for modern web apps.
+
+---
