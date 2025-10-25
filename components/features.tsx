@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import type { Variants } from "framer-motion";
 import { Brain, Cloud, Database } from "lucide-react";
 
 export default function Features() {
@@ -41,7 +42,7 @@ export default function Features() {
         delayChildren: 0.05,
       },
     },
-  };
+  } satisfies Variants;
 
   const itemVariants = {
     hidden: {
@@ -54,14 +55,14 @@ export default function Features() {
       y: 0,
       scale: 1,
       transition: {
-        type: "spring",
+        type: "spring" as const,
         stiffness: 45,
         damping: 15,
         mass: 0.85,
         duration: 0.7,
       },
     },
-  };
+  } satisfies Variants;
 
   const titleVariants = {
     hidden: { opacity: 0, y: 15 },
@@ -69,13 +70,13 @@ export default function Features() {
       opacity: 1,
       y: 0,
       transition: {
-        type: "spring",
+        type: "spring" as const,
         stiffness: 50,
         damping: 12,
         duration: 0.6,
       },
     },
-  };
+  } satisfies Variants;
 
   return (
     <section
@@ -110,11 +111,10 @@ export default function Features() {
           className="grid grid-cols-1 md:grid-cols-3 gap-8"
         >
           {features.map((feature, index) => (
-            <div
+            <motion.div
               key={index}
-            
+              variants={itemVariants}
               className="border-2 border-white/20 bg-white/5 backdrop-blur-sm p-8 hover:border-white/50 hover:bg-white/10 transition-all duration-300 group rounded-sm"
-           
             >
               <div className="mb-6 text-white/80 group-hover:text-white transition-colors">
                 <div className="bg-white/10 p-3 inline-block rounded-sm group-hover:bg-white/20 transition-all duration-300">
@@ -127,7 +127,7 @@ export default function Features() {
               <p className="text-white/70 group-hover:text-white/90 transition-colors">
                 {feature.description}
               </p>
-            </div>
+            </motion.div>
           ))}
         </motion.div>
       </div>

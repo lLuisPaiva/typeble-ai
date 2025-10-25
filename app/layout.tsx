@@ -2,6 +2,7 @@ import type React from "react";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
+import { LanguageProvider } from "@/components/language-provider";
 import FloatingCursor from "@/components/floating-cursor";
 import type { Metadata } from 'next'; // Import Metadata type
 
@@ -60,7 +61,7 @@ export default function RootLayout({
           defaultTheme="dark"
           enableSystem={false}
         >
-          {children}
+          <LanguageProvider>{children}</LanguageProvider>
         </ThemeProvider>
         <FloatingCursor />
       </body>

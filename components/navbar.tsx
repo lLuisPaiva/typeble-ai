@@ -1,22 +1,61 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import { motion } from "framer-motion"
-import { Menu, X } from "lucide-react"
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { Menu, X } from "lucide-react";
+import { useLanguage } from "@/components/language-provider";
+import type { Language } from "@/translations";
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const { language, setLanguage, translations, languageMeta } = useLanguage();
+  const t = translations.navbar;
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
-    }
+      setScrolled(window.scrollY > 50);
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleLanguageChange = (nextLanguage: Language) => {
+    setLanguage(nextLanguage);
+  };
+
+  const renderLanguageButtons = (variant: "desktop" | "mobile") => (
+    <div className={variant === "desktop" ? "flex items-center gap-2" : "flex items-center gap-3"}>
+      {languageMeta.map((meta) => {
+        const isActive = meta.code === language;
+        const baseClasses =
+          variant === "desktop"
+            ? "text-xs uppercase tracking-[0.4em] transition-colors"
+            : "text-2xl font-light uppercase tracking-[0.3em] transition-colors";
+
+        return (
+          <button
+            key={meta.code}
+            onClick={() => {
+              handleLanguageChange(meta.code as Language);
+              if (variant === "mobile") {
+                setIsOpen(false);
+              }
+            }}
+            className={`${baseClasses} ${
+              isActive ? "text-white" : "text-neutral-400 hover:text-white"
+            }`}
+            aria-pressed={isActive}
+            aria-label={`Switch to ${meta.name}`}
+          >
+            {meta.label}
+          </button>
+        );
+      })}
+    </div>
+  );
 
   return (
     <header
@@ -35,40 +74,41 @@ export default function Navbar() {
               href="#services"
               className="text-neutral-400 hover:text-white transition-colors text-sm uppercase tracking-widest"
             >
-              Services
+              {t.services}
             </Link>
             <Link
               href="#case-studies"
               className="text-neutral-400 hover:text-white transition-colors text-sm uppercase tracking-widest"
             >
-              Case Studies
+              {t.caseStudies}
             </Link>
             <Link
               href="#process"
               className="text-neutral-400 hover:text-white transition-colors text-sm uppercase tracking-widest"
             >
-              Process
+              {t.process}
             </Link>
             <Link
               href="#philosophy"
               className="text-neutral-400 hover:text-white transition-colors text-sm uppercase tracking-widest"
             >
-              Philosophy
+              {t.philosophy}
             </Link>
             <Link
               href="#engagement"
               className="text-neutral-400 hover:text-white transition-colors text-sm uppercase tracking-widest"
             >
-              Engagement
+              {t.engagement}
             </Link>
           </nav>
 
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center gap-4">
+            {renderLanguageButtons("desktop")}
             <Link
               href="#contact"
               className="border border-white px-5 py-2 text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-colors inline-block"
             >
-              Schedule Discovery
+              {t.cta}
             </Link>
           </div>
 
@@ -78,7 +118,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile menu */}
       {isOpen && (
         <motion.div
           initial={{ opacity: 0, height: 0 }}
@@ -93,46 +132,52 @@ export default function Navbar() {
                 className="text-neutral-400 hover:text-white py-2 text-2xl font-light"
                 onClick={() => setIsOpen(false)}
               >
-                Services
+                {t.services}
               </Link>
               <Link
                 href="#case-studies"
                 className="text-neutral-400 hover:text-white py-2 text-2xl font-light"
                 onClick={() => setIsOpen(false)}
               >
-                Case Studies
+                {t.caseStudies}
               </Link>
               <Link
                 href="#process"
                 className="text-neutral-400 hover:text-white py-2 text-2xl font-light"
                 onClick={() => setIsOpen(false)}
               >
-                Process
+                {t.process}
               </Link>
               <Link
                 href="#philosophy"
                 className="text-neutral-400 hover:text-white py-2 text-2xl font-light"
                 onClick={() => setIsOpen(false)}
               >
-                Philosophy
+                {t.philosophy}
               </Link>
               <Link
                 href="#engagement"
                 className="text-neutral-400 hover:text-white py-2 text-2xl font-light"
                 onClick={() => setIsOpen(false)}
               >
-                Engagement
+                {t.engagement}
               </Link>
+              <div className="pt-4 border-t border-neutral-800">
+                <div className="flex items-center gap-3">
+                  {renderLanguageButtons("mobile")}
+                </div>
+              </div>
               <Link
                 href="#contact"
                 className="border border-white px-5 py-3 text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-colors w-full mt-4 text-center"
+                onClick={() => setIsOpen(false)}
               >
-                Schedule Discovery
+                {t.cta}
               </Link>
             </nav>
           </div>
         </motion.div>
       )}
     </header>
-  )
+  );
 }

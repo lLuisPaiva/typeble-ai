@@ -4,9 +4,12 @@ import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { TextGenerateEffect } from "./TextGenerateEffect";
+import { useLanguage } from "@/components/language-provider";
 
 export default function Hero() {
   const shapeRef = useRef<HTMLDivElement>(null);
+  const { translations } = useLanguage();
+  const t = translations.hero;
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -14,16 +17,14 @@ export default function Hero() {
 
       const { clientX, clientY } = e;
       const { innerWidth, innerHeight } = window;
-
-      // Create a more pronounced 3D effect for the shape
       const xPos = (clientX / innerWidth - 0.5) * 10;
       const yPos = (clientY / innerHeight - 0.5) * 10;
-      const rotateX = -yPos * 0.5; // Rotate based on Y position
-      const rotateY = xPos * 0.5; // Rotate based on X position
+      const rotateX = -yPos * 0.5;
+      const rotateY = xPos * 0.5;
 
-      shapeRef.current.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translate3d(${
-        xPos * 0.3
-      }px, ${yPos * 0.3}px, 0)`;
+      shapeRef.current.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translate3d(${xPos * 0.3}px, ${
+        yPos * 0.3
+      }px, 0)`;
     };
 
     window.addEventListener("mousemove", handleMouseMove);
@@ -48,12 +49,12 @@ export default function Hero() {
               className="mb-6"
             >
               <div className="inline-block border border-neutral-800 px-3 py-1 text-xs uppercase tracking-widest text-neutral-400">
-                Strategic Engineering Partner
+                {t.strap}
               </div>
             </motion.div>
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight tracking-tighter">
               <TextGenerateEffect
-                words="Engineering Your Unfair Advantage."
+                words={t.headline}
                 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight tracking-tighter"
                 duration={0.6}
                 speed={0.22}
@@ -67,7 +68,7 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.4 }}
               className="text-neutral-300 mb-8 max-w-xl text-lg"
             >
-              We architect mission-critical SaaS platforms, enterprise AI solutions, retrieval-augmented generation systems, and autonomous agents that hardwire leverage into your business. When failure is not an option, we are your strike team.
+              {t.subheadline}
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -79,18 +80,17 @@ export default function Hero() {
                 href="#contact"
                 className="inline-flex items-center justify-center border border-white px-8 py-3 text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-colors w-full sm:w-auto"
               >
-                Schedule a Discovery Call
+                {t.primaryCta}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </a>
               <a
                 href="#case-studies"
                 className="inline-flex items-center justify-center border border-neutral-800 px-8 py-3 text-sm uppercase tracking-widest text-neutral-400 hover:border-neutral-600 hover:text-white transition-colors w-full sm:w-auto"
               >
-                Proof of Impact
+                {t.secondaryCta}
               </a>
             </motion.div>
           </div>
-          {/* shape with professional animation sequence */}
           <div className="relative">
             <motion.div
               ref={shapeRef}
@@ -99,12 +99,11 @@ export default function Hero() {
               transition={{
                 duration: 0.7,
                 delay: shapeAnimationDelay,
-                ease: [0.22, 1, 0.36, 1], // Custom cubic bezier for smooth appearance
+                ease: [0.22, 1, 0.36, 1],
               }}
               className="relative transition-transform duration-200 ease-out"
               style={{ transformStyle: "preserve-3d" }}
             >
-              {/* Background shape - appears first */}
               <motion.div
                 className="absolute -bottom-10 -right-10 w-2/3 h-2/3 border border-neutral-800 bg-neutral-950 z-[-1]"
                 initial={{ opacity: 0, x: 10, y: 10 }}
@@ -117,7 +116,6 @@ export default function Hero() {
                 style={{ transform: "translateZ(-20px)" }}
               ></motion.div>
 
-              {/* Main square container */}
               <motion.div
                 className="aspect-square relative overflow-hidden border border-neutral-800"
                 initial={{ opacity: 0, scale: 0.92 }}
@@ -130,7 +128,6 @@ export default function Hero() {
                   damping: 20,
                 }}
               >
-                {/* Background gradient */}
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-br from-neutral-700 to-neutral-900"
                   initial={{ opacity: 0 }}
@@ -145,7 +142,6 @@ export default function Hero() {
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.6, delay: shapeAnimationDelay + 0.3 }}
                   >
-                    {/* Four lines - animate in sequence */}
                     <motion.div
                       className="absolute top-0 left-0 w-full h-1 bg-white"
                       initial={{ scaleX: 0, originX: 0 }}
@@ -171,7 +167,6 @@ export default function Hero() {
                       transition={{ duration: 0.5, delay: shapeAnimationDelay + 0.7 }}
                     ></motion.div>
 
-                    {/* Center square - last to appear */}
                     <motion.div
                       className="absolute top-1/4 left-1/4 w-1/2 h-1/2 border border-neutral-700 flex items-center justify-center"
                       initial={{ opacity: 0, scale: 0.7 }}
@@ -196,7 +191,7 @@ export default function Hero() {
                           animate={{ opacity: 1, scale: 1 }}
                           transition={{
                             duration: 0.5,
-                            delay: shapeAnimationDelay + 1.0,
+                            delay: shapeAnimationDelay + 1,
                             type: "spring",
                             stiffness: 200,
                             damping: 15,
@@ -217,6 +212,11 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.8 }}
           className="absolute bottom-4 left-0 right-0 flex justify-center pointer-events-none"
         >
+          <div className="flex items-center gap-8 border border-neutral-800 px-8 py-4 bg-black/70">
+            <div className="text-xs uppercase tracking-widest text-neutral-400">{t.scrollTop}</div>
+            <div className="h-px w-10 bg-neutral-800"></div>
+            <div className="text-xs uppercase tracking-widest text-neutral-400">{t.scrollBottom}</div>
+          </div>
         </motion.div>
       </div>
     </section>
