@@ -69,7 +69,7 @@ function LazyLoad({ children }: { children: React.ReactNode }) {
 
 export default function Home() {
   return (
-    <main className="bg-black text-white min-h-[7500px]">
+    <main className="bg-black text-white min-h-screen">
       <ScrollRestoration />
       <NoiseBackground />
       <Navbar />
