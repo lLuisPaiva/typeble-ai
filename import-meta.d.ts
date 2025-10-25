@@ -1,7 +1,12 @@
-declare interface ImportMeta {
-  glob<T = unknown>(pattern: string, options: { eager: true }): Record<string, T>;
-  glob<T = unknown>(
-    pattern: string,
-    options?: { eager?: false }
-  ): Record<string, () => Promise<T>>;
+interface WebpackRequire extends NodeRequire {
+  context(
+    directory: string,
+    useSubdirectories?: boolean,
+    regExp?: RegExp
+  ): {
+    keys(): string[];
+    <T>(id: string): T;
+  };
 }
+
+declare const require: WebpackRequire;

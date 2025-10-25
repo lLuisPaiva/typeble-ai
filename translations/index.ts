@@ -1,15 +1,28 @@
-import { Translations } from "./types";
+import { Translations, TranslationMeta } from "./types";
 
 type TranslationModule = { default: Translations };
 
-const translationModules = import.meta.glob("./locales/*.ts", { eager: true }) as Record<
-  string,
-  TranslationModule
->;
+type RequireWithContext = typeof require & {
+  context: (
+    directory: string,
+    useSubdirectories?: boolean,
+    regExp?: RegExp
+  ) => {
+    keys(): string[];
+    <T>(id: string): T;
+  };
+};
 
-const loadedTranslations = Object.entries(translationModules).reduce<Record<string, Translations>>(
-  (accumulator, [path, module]) => {
-    const language = path.replace("./locales/", "").replace(".ts", "");
+const translationContext = (require as RequireWithContext).context(
+  "./locales",
+  false,
+  /\.ts$/
+);
+
+const loadedTranslations = translationContext.keys().reduce<Record<string, Translations>>( 
+  (accumulator, filename) => {
+    const module = translationContext(filename) as TranslationModule;
+    const language = filename.replace("./", "").replace(".ts", "");
     accumulator[language] = module.default;
     return accumulator;
   },
@@ -32,7 +45,7 @@ export function getTranslations(language: Language): Translations {
   return selected;
 }
 
-export function getLanguageMeta(language: Language) {
+export function getLanguageMeta(language: Language): TranslationMeta {
   return getTranslations(language).meta;
 }
 
