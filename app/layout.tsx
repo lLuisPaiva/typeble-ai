@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     title: "Typeble — Strategic Engineering Partner",
     description:
       "Typeble architects mission-critical SaaS platforms, enterprise AI solutions, retrieval-augmented generation systems, and autonomous agents for operators who cannot afford failure.",
-    url: "https://typeble.ai",
+    url: "https://typeble.com",
     siteName: "Typeble",
     images: [
       {
