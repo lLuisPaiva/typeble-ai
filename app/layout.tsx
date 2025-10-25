@@ -4,47 +4,46 @@ import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { LanguageProvider } from "@/components/language-provider";
 import FloatingCursor from "@/components/floating-cursor";
-import type { Metadata } from 'next'; // Import Metadata type
+import type { Metadata } from "next";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = { // Add Metadata type
-  title: "Mono - MINIMAL BRUTALIST DESIGN",
-  description: "We create minimalist digital experiences that make an impact. Raw, unfiltered, and straight to the point.",
-  generator: "Mohamed Djoudir",
-  // Add manifest and icons metadata
+export const metadata: Metadata = {
+  title: "Typeble — Strategic Engineering Partner",
+  description:
+    "Typeble architects mission-critical SaaS platforms, enterprise AI solutions, retrieval-augmented generation systems, and autonomous agents for operators who cannot afford failure.",
+  generator: "Typeble",
   manifest: "/site.webmanifest",
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any", type: "image/x-icon" },
       { url: "/favicon.svg", type: "image/svg+xml" },
     ],
-    apple: "/apple-touch-icon.png", // Assumes apple-touch-icon.png exists in /public
+    apple: "/apple-touch-icon.png",
   },
-  // Add Open Graph metadata
   openGraph: {
-    title: "Mono - MINIMAL BRUTALIST DESIGN",
-    description: "We create minimalist digital experiences that make an impact. Raw, unfiltered, and straight to the point.",
-    url: "https://your-website-url.com", // Replace with your actual website URL
-    siteName: "Mono",
+    title: "Typeble — Strategic Engineering Partner",
+    description:
+      "Typeble architects mission-critical SaaS platforms, enterprise AI solutions, retrieval-augmented generation systems, and autonomous agents for operators who cannot afford failure.",
+    url: "https://typeble.ai",
+    siteName: "Typeble",
     images: [
       {
-        url: "/image.png", // Path to your image in the public folder
-        width: 1200, // Optional: Specify image width
-        height: 630, // Optional: Specify image height
-        alt: "Mono Website Preview", // Optional: Alt text for the image
+        url: "/image.png",
+        width: 1200,
+        height: 630,
+        alt: "Typeble platform preview",
       },
     ],
-    locale: "en_US", // Optional: Specify locale
-    type: "website", // Optional: Specify content type
+    locale: "en_US",
+    type: "website",
   },
-  // Optional: Add Twitter card metadata if needed
   twitter: {
     card: "summary_large_image",
-    title: "Mono - MINIMAL BRUTALIST DESIGN",
-    description: "We create minimalist digital experiences that make an impact. Raw, unfiltered, and straight to the point.",
-    // creator: "@yourTwitterHandle", // Optional: Your Twitter handle
-    images: ["/image.png"], // Path to your image in the public folder
+    title: "Typeble — Strategic Engineering Partner",
+    description:
+      "Typeble architects mission-critical SaaS platforms, enterprise AI solutions, retrieval-augmented generation systems, and autonomous agents for operators who cannot afford failure.",
+    images: ["/image.png"],
   },
 };
 

@@ -1,63 +1,40 @@
+# Typeble — Strategic Engineering Partner Platform
 
----
+This repository powers **Typeble**, the boutique engineering partner that architects and ships mission-critical SaaS platforms, enterprise AI solutions, retrieval-augmented generation systems, and autonomous agents for high-stakes operators.
 
-# MONO – Creative Agency Portfolio Template (Next.js + Tailwind CSS)
-
-**MONO** is a stylish and modern portfolio template built with **Next.js** and **Tailwind CSS**. Ideal for creative agencies, freelancers, and designers who want a bold, professional online presence.
-
-🔗 **Live Demo & Details:** [aniq-ui.com MONO Template](https://www.aniq-ui.com/en/templates/creative-agency-portfolio-nextjs-template)
+The site is built with **Next.js 15**, **React 19**, **Tailwind CSS**, and **Framer Motion**, and includes a bilingual (English/Portuguese) content system plus an AI-assisted contact experience.
 
 ## 🚀 Getting Started
 
-To get started locally:
-
-1. **Install dependencies**
-
-   ```sh
-   yarn install
-   ```
-
-2. **Start the development server**
-
-   ```sh
-   yarn dev
-   ```
-
-   Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-3. **Build for production**
-
-   ```sh
-   yarn build
-   yarn start
-   ```
-
-## 🧠 Project Structure
-
-```
-├── public/          # Static assets (images, fonts, etc.)
-├── src/             # Source code
-│   ├── components/  # Reusable UI components
-│   ├── pages/       # Next.js pages
-│   ├── styles/      # Tailwind & custom styles
-│   └── lib/         # Utilities and helpers
-└── .next/           # Build output (auto-generated)
+```sh
+yarn install
+yarn dev
 ```
 
-## 🌟 Features
+Visit [http://localhost:3000](http://localhost:3000) once the dev server is running. Production builds are created with:
 
-* ✨ Built with Next.js and Tailwind CSS
-* 🎭 Bold, minimal design
-* 🖼️ Optimized for showcasing portfolios
-* 📱 Fully responsive and mobile-ready
-* 🔄 Easy to customize and scale
+```sh
+yarn build
+yarn start
+```
 
-## 💬 Support
+## � Highlights
 
-For questions or support, contact the [Aniq UI team](https://www.aniq-ui.com/#contact).
+- ⛓️ Mission-critical copy and visuals tailored to Typeble’s service lines
+- 🌐 Language provider with file-based locale loading (en / pt)
+- 🤝 AI concierge experience in the contact section
+- 🎯 Optimised hero animation and brutalist-inspired visual system
+- 🧪 Ready for deployment on Vercel (Tailwind runtime patch included)
 
----
+## 📁 Key Paths
 
-Created by [Aniq UI](https://www.aniq-ui.com) — Premium Next.js Templates for modern web apps.
+```
+app/               # Next.js App Router entry points
+components/        # UI sections (hero, features, pricing, etc.)
+translations/      # Locale-aware copy blocks
+public/            # Static assets and metadata files
+```
 
----
+## � Licensing
+
+Released under the MIT License © Typeble. See [LICENSE](LICENSE) for details.
