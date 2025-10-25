@@ -83,9 +83,9 @@ export default function Home() {
       <LazyLoad>
         <Process />
       </LazyLoad>
-      <LazyLoad>
+      {/* <LazyLoad>
         <Testimonials />
-      </LazyLoad>
+      </LazyLoad> */}
       <LazyLoad>
         <Pricing />
       </LazyLoad>

@@ -27,21 +27,21 @@ export default function Navbar() {
       <div className="container mx-auto px-4 md:px-8">
         <div className="flex items-center justify-between">
           <Link href="/" className="text-white font-bold text-2xl tracking-tighter">
-            MONO<span className="text-neutral-400">.</span>
+            TYPEBLE
           </Link>
 
           <nav className="hidden md:flex items-center space-x-8">
             <Link
-              href="#features"
+              href="#services"
               className="text-neutral-400 hover:text-white transition-colors text-sm uppercase tracking-widest"
             >
-              Features
+              Services
             </Link>
             <Link
-              href="#work"
+              href="#case-studies"
               className="text-neutral-400 hover:text-white transition-colors text-sm uppercase tracking-widest"
             >
-              Work
+              Case Studies
             </Link>
             <Link
               href="#process"
@@ -50,17 +50,26 @@ export default function Navbar() {
               Process
             </Link>
             <Link
-              href="#pricing"
+              href="#philosophy"
               className="text-neutral-400 hover:text-white transition-colors text-sm uppercase tracking-widest"
             >
-              Pricing
+              Philosophy
+            </Link>
+            <Link
+              href="#engagement"
+              className="text-neutral-400 hover:text-white transition-colors text-sm uppercase tracking-widest"
+            >
+              Engagement
             </Link>
           </nav>
 
           <div className="hidden md:block">
-            <button className="border border-white px-5 py-2 text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-colors">
-              Contact
-            </button>
+            <Link
+              href="#contact"
+              className="border border-white px-5 py-2 text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-colors inline-block"
+            >
+              Schedule Discovery
+            </Link>
           </div>
 
           <button className="md:hidden text-white" onClick={() => setIsOpen(!isOpen)}>
@@ -80,18 +89,18 @@ export default function Navbar() {
           <div className="container mx-auto px-4 py-8">
             <nav className="flex flex-col space-y-6">
               <Link
-                href="#features"
+                href="#services"
                 className="text-neutral-400 hover:text-white py-2 text-2xl font-light"
                 onClick={() => setIsOpen(false)}
               >
-                Features
+                Services
               </Link>
               <Link
-                href="#work"
+                href="#case-studies"
                 className="text-neutral-400 hover:text-white py-2 text-2xl font-light"
                 onClick={() => setIsOpen(false)}
               >
-                Work
+                Case Studies
               </Link>
               <Link
                 href="#process"
@@ -101,15 +110,25 @@ export default function Navbar() {
                 Process
               </Link>
               <Link
-                href="#pricing"
+                href="#philosophy"
                 className="text-neutral-400 hover:text-white py-2 text-2xl font-light"
                 onClick={() => setIsOpen(false)}
               >
-                Pricing
+                Philosophy
               </Link>
-              <button className="border border-white px-5 py-3 text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-colors w-full mt-4">
-                Contact
-              </button>
+              <Link
+                href="#engagement"
+                className="text-neutral-400 hover:text-white py-2 text-2xl font-light"
+                onClick={() => setIsOpen(false)}
+              >
+                Engagement
+              </Link>
+              <Link
+                href="#contact"
+                className="border border-white px-5 py-3 text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-colors w-full mt-4 text-center"
+              >
+                Schedule Discovery
+              </Link>
             </nav>
           </div>
         </motion.div>

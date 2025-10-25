@@ -48,30 +48,16 @@ export default function Hero() {
               className="mb-6"
             >
               <div className="inline-block border border-neutral-800 px-3 py-1 text-xs uppercase tracking-widest text-neutral-400">
-                Digital Design Studio
+                Strategic Engineering Partner
               </div>
             </motion.div>
-            <h1>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight tracking-tighter">
               <TextGenerateEffect
-                words="MINIMAL"
-                className="text-5xl md:text-7xl lg:text-8xl font-bold m-0 leading-tight tracking-tighter"
-                duration={0.5}
-                speed={0.2}
+                words="Engineering Your Unfair Advantage."
+                className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight tracking-tighter"
+                duration={0.6}
+                speed={0.22}
                 initialDelay={0.2}
-              />
-              <TextGenerateEffect
-                words="BRUTALIST"
-                className="text-5xl md:text-7xl lg:text-8xl font-bold m-0 leading-tight tracking-tighter text-neutral-400"
-                duration={0.5}
-                speed={0.2}
-                initialDelay={0.4}
-              />
-              <TextGenerateEffect
-                words="DESIGN"
-                className="text-5xl md:text-7xl lg:text-8xl font-bold m-2 leading-tight tracking-tighter"
-                duration={0.5}
-                speed={0.2}
-                initialDelay={0.6}
               />
             </h1>
 
@@ -79,24 +65,29 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="text-neutral-400 mb-8 max-w-md text-lg"
+              className="text-neutral-300 mb-8 max-w-xl text-lg"
             >
-              We create minimalist digital experiences that make an impact. Raw,
-              unfiltered, and straight to the point.
+              We architect mission-critical SaaS platforms, enterprise AI solutions, retrieval-augmented generation systems, and autonomous agents that hardwire leverage into your business. When failure is not an option, we are your strike team.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 relative z-20"
             >
-              <button className="border border-white px-8 py-3 text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-colors flex items-center justify-center">
-                View Our Work
+              <a
+                href="#contact"
+                className="inline-flex items-center justify-center border border-white px-8 py-3 text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-colors w-full sm:w-auto"
+              >
+                Schedule a Discovery Call
                 <ArrowRight className="ml-2 h-4 w-4" />
-              </button>
-              <button className="border border-neutral-800 px-8 py-3 text-sm uppercase tracking-widest text-neutral-400 hover:border-neutral-600 hover:text-white transition-colors">
-                About Us
-              </button>
+              </a>
+              <a
+                href="#case-studies"
+                className="inline-flex items-center justify-center border border-neutral-800 px-8 py-3 text-sm uppercase tracking-widest text-neutral-400 hover:border-neutral-600 hover:text-white transition-colors w-full sm:w-auto"
+              >
+                Proof of Impact
+              </a>
             </motion.div>
           </div>
           {/* shape with professional animation sequence */}
@@ -224,17 +215,8 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.8 }}
-          className="absolute bottom-10 left-0 right-0 flex justify-center"
+          className="absolute bottom-4 left-0 right-0 flex justify-center pointer-events-none"
         >
-          <div className="flex items-center gap-8 border border-neutral-800 px-8 py-4">
-            <div className="text-xs uppercase tracking-widest text-neutral-400">
-              Scroll
-            </div>
-            <div className="h-px w-10 bg-neutral-800"></div>
-            <div className="text-xs uppercase tracking-widest text-neutral-400">
-              Discover
-            </div>
-          </div>
         </motion.div>
       </div>
     </section>

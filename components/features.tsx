@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Square, Circle, Triangle, Hexagon } from "lucide-react";
+import { Brain, Cloud, Database } from "lucide-react";
 
 export default function Features() {
   const sectionRef = useRef(null);
@@ -13,28 +13,22 @@ export default function Features() {
 
   const features = [
     {
-      icon: <Square className="w-6 h-6" />,
-      title: "Minimalist Design",
+      icon: <Brain className="w-6 h-6" />,
+      title: "Intelligent Systems & AI",
       description:
-        "Clean, uncluttered interfaces that focus on content and functionality without unnecessary elements.",
+        "We design, fine-tune, and productionize custom LLMs, autonomous agents, and retrieval-augmented generation systems that embed decisions into your operations—not prototypes that gather dust.",
     },
     {
-      icon: <Circle className="w-6 h-6" />,
-      title: "Brutalist Approach",
+      icon: <Cloud className="w-6 h-6" />,
+      title: "Scalable SaaS Platforms",
       description:
-        "Raw, honest design that embraces the digital medium without trying to mimic physical materials.",
+        "Cloud-native, multi-tenant architecture engineered for regulated, high-throughput environments. From FinTech ledgers to ML workflows, we ship platforms ready for continuous scale.",
     },
     {
-      icon: <Triangle className="w-6 h-6" />,
-      title: "Responsive Layout",
+      icon: <Database className="w-6 h-6" />,
+      title: "Data & System Architecture",
       description:
-        "Perfectly adapted experiences across all devices, from desktop to mobile, without compromise.",
-    },
-    {
-      icon: <Hexagon className="w-6 h-6" />,
-      title: "Performance Focus",
-      description:
-        "Lightning-fast loading times and smooth interactions for optimal user experience.",
+        "We modernize legacy systems, implement resilient data pipelines, and run full MLOps to create a single source of truth that keeps enterprise AI initiatives deployable and defensible.",
     },
   ];
 
@@ -85,7 +79,7 @@ export default function Features() {
 
   return (
     <section
-      id="features"
+      id="services"
       ref={sectionRef}
       className="py-4 mt-20 sm:mt-0 sm:py-24 relative overflow-hidden bg-gradient-to-b from-black to-neutral-900"
     >
@@ -99,13 +93,13 @@ export default function Features() {
           <div className="flex items-center gap-4 mb-6">
             <div className="h-px w-12 bg-white/40"></div>
             <div className="text-xs uppercase tracking-widest text-white/80">
-              Our Approach
+              Services
             </div>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-white">
-            Minimalist Design
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-white max-w-3xl">
+            Beyond the Code.
             <br />
-            <span className="text-white/70">Maximum Impact</span>
+            <span className="text-white/70">Strategic Engineering.</span>
           </h2>
         </motion.div>
 
@@ -113,7 +107,7 @@ export default function Features() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
         >
           {features.map((feature, index) => (
             <div

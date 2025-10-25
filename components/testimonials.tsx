@@ -1,43 +1,11 @@
 "use client"
 
-import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react"
+import { motion } from "framer-motion"
+import { Quote } from "lucide-react"
 
 export default function Testimonials() {
-  const [activeIndex, setActiveIndex] = useState(0)
-
-  const testimonials = [
-    {
-      quote:
-        "The minimalist approach perfectly captured our brand essence. Their attention to detail and focus on typography made our digital presence stand out.",
-      author: "Sarah Johnson",
-      role: "Creative Director, Studio Black",
-    },
-    {
-      quote:
-        "Working with this team was refreshing. They stripped away all the unnecessary elements and delivered a product that was both beautiful and functional.",
-      author: "Michael Chen",
-      role: "Founder, Monochrome",
-    },
-    {
-      quote:
-        "Their brutalist design philosophy challenged our conventional thinking and resulted in a website that truly captures attention and drives engagement.",
-      author: "Emily Rodriguez",
-      role: "Marketing Lead, Contrast Inc.",
-    },
-  ]
-
-  const next = () => {
-    setActiveIndex((prev) => (prev + 1) % testimonials.length)
-  }
-
-  const prev = () => {
-    setActiveIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
-  }
-
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section id="philosophy" className="py-24 relative overflow-hidden">
       <div className="container mx-auto px-4 md:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -48,12 +16,10 @@ export default function Testimonials() {
         >
           <div className="flex items-center gap-4 mb-6">
             <div className="h-px w-12 bg-white/40"></div>
-            <div className="text-xs uppercase tracking-widest text-white/80">Testimonials</div>
+            <div className="text-xs uppercase tracking-widest text-white/80">Client Proof</div>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-white">
-            What Our Clients
-            <br />
-            <span className="text-white/70">Say About Us</span>
+            What Our Clients Say
           </h2>
         </motion.div>
 
@@ -64,61 +30,24 @@ export default function Testimonials() {
             </div>
 
             <div className="relative z-10">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeIndex}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.5 }}
-                  className="min-h-[200px] flex flex-col"
-                >
-                  <blockquote className="text-2xl md:text-3xl font-light mb-8 leading-relaxed text-white">
-                    "{testimonials[activeIndex].quote}"
-                  </blockquote>
-                  <div className="mt-auto flex items-center">
-                    <div className="w-12 h-px bg-white/40 mr-4"></div>
-                    <div>
-                      <div className="font-bold text-white">{testimonials[activeIndex].author}</div>
-                      <div className="text-white/70 text-sm">{testimonials[activeIndex].role}</div>
-                    </div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="flex flex-col"
+              >
+                <blockquote className="text-2xl md:text-3xl font-light mb-8 leading-relaxed text-white">
+                  “This isn’t an ‘agency’; it’s our strategic engineering partner. They diagnosed the architectural failure costing us millions, rebuilt the core platform, and unlocked the next $100M in ARR. Their principals feel like an internal strike team.”
+                </blockquote>
+                <div className="mt-auto flex items-center">
+                  <div className="w-12 h-px bg-white/40 mr-4"></div>
+                  <div>
+                    <div className="font-bold text-white">Jane K. Doe</div>
+                    <div className="text-white/70 text-sm">Chief Technology Officer, [Client Company Name]</div>
                   </div>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-
-            {/* Pagination indicator */}
-            <div className="mt-8 flex items-center">
-              <div className="text-white/60 text-sm mr-4">
-                {activeIndex + 1} / {testimonials.length}
-              </div>
-              <div className="flex-1 h-px bg-white/20 relative">
-                <motion.div 
-                  className="h-px bg-white absolute top-0 left-0"
-                  initial={{ width: "0%" }}
-                  animate={{ 
-                    width: `${((activeIndex + 1) / testimonials.length) * 100}%`,
-                  }}
-                  transition={{ duration: 0.3 }}
-                ></motion.div>
-              </div>
-            </div>
-
-            <div className="flex justify-end mt-8 gap-4">
-              <button 
-                onClick={prev} 
-                className="p-2 border-2 border-white/20 hover:border-white/60 hover:bg-white/5 transition-all duration-300 group"
-                aria-label="Previous testimonial"
-              >
-                <ChevronLeft className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" />
-              </button>
-              <button 
-                onClick={next} 
-                className="p-2 border-2 border-white/20 hover:border-white/60 hover:bg-white/5 transition-all duration-300 group"
-                aria-label="Next testimonial"
-              >
-                <ChevronRight className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" />
-              </button>
+                </div>
+              </motion.div>
             </div>
           </div>
         </div>

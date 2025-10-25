@@ -10,29 +10,33 @@ export default function Process() {
   const steps = [
     {
       number: "01",
-      title: "Discovery",
-      description: "We analyze your needs, goals, and target audience to establish a solid foundation for the project.",
+      title: "Deep Discovery & Architecture",
+      description:
+        "Principal engineers embed with your team, interrogate goals, audit systems, and blueprint a measurable path to ROI before code is written.",
     },
     {
       number: "02",
-      title: "Strategy",
-      description: "We develop a comprehensive plan that aligns with your business objectives and user expectations.",
+      title: "Sprint Zero & Prototyping",
+      description:
+        "We lock the stack, CI/CD pipeline, and data models. A high-fidelity prototype and architecture review board sign-off align every stakeholder.",
     },
     {
       number: "03",
-      title: "Design",
-      description: "We create minimalist, brutalist designs that focus on functionality and user experience.",
+      title: "Agile Co-Creation",
+      description:
+        "Two-week sprints with dedicated Typeble leads, open GitHub repos, and unfiltered access. Weekly demos keep decisions fast and transparent.",
     },
     {
       number: "04",
-      title: "Development",
+      title: "Rigorous QA & Security",
       description:
-        "We build your digital product using modern technologies and best practices for optimal performance.",
+        "Compliance-first delivery covering SOC 2, HIPAA, GDPR, penetration testing, and automated QA—embedded from sprint zero, not bolted on.",
     },
     {
       number: "05",
-      title: "Launch",
-      description: "We deploy your project and ensure everything works flawlessly across all platforms and devices.",
+      title: "Deployment & Scalable Hand-off",
+      description:
+        "We orchestrate production launch, document every system, train your team, and continue with MLOps/SRE support or hand off cleanly. You own the IP.",
     },
   ]
 
@@ -48,12 +52,12 @@ export default function Process() {
         >
           <div className="flex items-center gap-4 mb-6">
             <div className="h-px w-12 bg-white/40"></div>
-            <div className="text-xs uppercase tracking-widest text-white/80">How We Work</div>
+            <div className="text-xs uppercase tracking-widest text-white/80">Process</div>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-white">
-            Our Process
+            Our Framework.
             <br />
-            <span className="text-white/90">Step by Step</span>
+            <span className="text-white/90">From Ambition to Deployment.</span>
           </h2>
         </motion.div>
 
