@@ -206,7 +206,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.8 }}
@@ -217,7 +217,7 @@ export default function Hero() {
             <div className="h-px w-10 bg-neutral-800"></div>
             <div className="text-xs uppercase tracking-widest text-neutral-400">{t.scrollBottom}</div>
           </div>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );
