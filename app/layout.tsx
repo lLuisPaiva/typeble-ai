@@ -3,6 +3,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { LanguageProvider } from "@/components/language-provider";
+import { ToastProvider } from "@/components/toast-provider";
 import FloatingCursor from "@/components/floating-cursor";
 import type { Metadata } from "next";
 
@@ -55,12 +56,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning >
       <body className={`${inter.className} bg-black mx-auto max-w-[1440px]`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem={false}
-        >
-          <LanguageProvider>{children}</LanguageProvider>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+          <ToastProvider>
+            <LanguageProvider>{children}</LanguageProvider>
+          </ToastProvider>
         </ThemeProvider>
         <FloatingCursor />
       </body>

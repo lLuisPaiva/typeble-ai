@@ -4,6 +4,7 @@ import React, { FormEvent, useCallback, useState } from "react";
 import * as Select from "@radix-ui/react-select";
 import { Check, ChevronDown } from "lucide-react";
 import { useLanguage } from "./language-provider";
+import { useToast } from "./toast-provider";
 
 type ContactFormProps = {
   onSuccess?: () => void;
@@ -18,6 +19,7 @@ const challengeOptions = [
 
 export default function ContactForm({ onSuccess }: ContactFormProps) {
   const { language } = useLanguage();
+  const { pushToast } = useToast();
   const [challenge, setChallenge] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [feedback, setFeedback] = useState<string | null>(null);
@@ -26,7 +28,8 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
     async (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
 
-      const formData = new FormData(event.currentTarget);
+      const formElement = event.currentTarget;
+      const formData = new FormData(formElement);
       const fullName = formData.get("fullName")?.toString().trim() ?? "";
       const workEmail = formData.get("workEmail")?.toString().trim() ?? "";
       const company = formData.get("company")?.toString().trim() ?? "";
@@ -63,20 +66,24 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
           throw new Error(typeof data.message === "string" ? data.message : "We couldn't send your message. Try again.");
         }
 
-        event.currentTarget.reset();
+  formElement.reset();
         setChallenge("");
         setStatus("success");
-        setFeedback("Thanks! We'll get in touch within one business day.");
+        const successMessage = "Thanks! We'll get in touch within one business day.";
+        setFeedback(successMessage);
+        pushToast({ message: successMessage, variant: "success" });
 
         setTimeout(() => {
           onSuccess?.();
         }, 700);
       } catch (error) {
         setStatus("error");
-        setFeedback(error instanceof Error ? error.message : "We couldn't send your message. Try again.");
+        const fallbackMessage = error instanceof Error ? error.message : "We couldn't send your message. Try again.";
+        setFeedback(fallbackMessage);
+        pushToast({ message: fallbackMessage, variant: "error" });
       }
     },
-    [challenge, language, onSuccess]
+  [challenge, language, onSuccess, pushToast]
   );
 
   return (
