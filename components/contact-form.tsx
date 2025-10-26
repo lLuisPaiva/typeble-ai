@@ -131,7 +131,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
             </Select.Icon>
           </Select.Trigger>
           <Select.Portal>
-            <Select.Content className="bg-neutral-950 border border-neutral-700 shadow-lg">
+            <Select.Content className="z-[1100] max-h-[240px] w-[var(--radix-select-trigger-width)] overflow-y-auto bg-neutral-950 border border-neutral-700 shadow-lg">
               <Select.Viewport>
                 {challengeOptions.map((option) => (
                   <Select.Item key={option.value} value={option.value} className="text-lg py-3 px-4 flex items-center justify-between gap-3">
@@ -145,7 +145,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
             </Select.Content>
           </Select.Portal>
         </Select.Root>
-  <input type="hidden" name="challenge" value={challenge} readOnly />
+        <input type="hidden" name="challenge" value={challenge} readOnly />
       </div>
 
       <div>
