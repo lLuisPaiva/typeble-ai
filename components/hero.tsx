@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { TextGenerateEffect } from "./TextGenerateEffect";
 import { useLanguage } from "@/components/language-provider";
+import { ScheduleDialog } from "@/components/schedule-dialog";
 
 export default function Hero() {
   const shapeRef = useRef<HTMLDivElement>(null);
@@ -76,13 +77,17 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.6 }}
               className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 relative z-20"
             >
-              <a
-                href="#contact"
-                className="inline-flex items-center justify-center border border-white px-8 py-3 text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-colors w-full sm:w-auto"
-              >
-                {t.primaryCta}
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </a>
+              <ScheduleDialog
+                trigger={
+                  <button
+                    type="button"
+                    className="inline-flex items-center justify-center border border-white px-8 py-3 text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-colors w-full sm:w-auto"
+                  >
+                    {t.primaryCta}
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </button>
+                }
+              />
               <a
                 href="#case-studies"
                 className="inline-flex items-center justify-center border border-neutral-800 px-8 py-3 text-sm uppercase tracking-widest text-neutral-400 hover:border-neutral-600 hover:text-white transition-colors w-full sm:w-auto"

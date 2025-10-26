@@ -1,48 +1,65 @@
-"use client"
+"use client";
 
-import { useRef } from "react"
-import { motion, useInView } from "framer-motion"
+import { motion } from "framer-motion";
+import { AccordionItem, AccordionSingle } from "@/components/ui/accordion";
+
+const steps = [
+  {
+    number: "01",
+    title: "Deep Discovery & Architecture",
+    description: "Principal engineers embed, audit systems, and shape a measurable technical thesis before code ships.",
+    detail: [
+      "Architecture working session with principal leads",
+      "Legacy system audit and risk register",
+      "ROI and velocity targets agreed with stakeholders",
+    ],
+  },
+  {
+    number: "02",
+    title: "Sprint Zero & Prototyping",
+    description: "We lock the stack, automation, and data foundations with high-fidelity prototypes for sign-off.",
+    detail: [
+      "CI/CD runway, IaC, and observability baselines",
+      "Security, compliance, and data access controls",
+      "Prototype demo aligned to the architecture charter",
+    ],
+  },
+  {
+    number: "03",
+    title: "Agile Co-Creation",
+    description: "Two-week sprints, open repos, and unfiltered access to Typeble leads keep delivery transparent.",
+    detail: [
+      "Weekly demos with roadmap and risk updates",
+      "Dedicated Slack, Jira, and shared documentation",
+      "Velocity snapshots and quality metrics each sprint",
+    ],
+  },
+  {
+    number: "04",
+    title: "Rigorous QA & Security",
+    description: "Compliance-first workflows embed security and QA from the first sprint, not as a hand-off.",
+    detail: [
+      "SOC 2, HIPAA, GDPR controls verified",
+      "Automated testing and performance benchmarking",
+      "Third-party penetration and red-team coordination",
+    ],
+  },
+  {
+    number: "05",
+    title: "Deployment & Scalable Hand-off",
+    description: "Production launch with knowledge transfer, documentation, and optional ongoing SRE/MLOps support.",
+    detail: [
+      "Cutover playbooks with rollback plans",
+      "Runbooks, diagrams, and ownership matrix",
+      "Post-launch shadowing or managed runway",
+    ],
+  },
+];
 
 export default function Process() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.2 })
-
-  const steps = [
-    {
-      number: "01",
-      title: "Deep Discovery & Architecture",
-      description:
-        "Principal engineers embed with your team, interrogate goals, audit systems, and blueprint a measurable path to ROI before code is written.",
-    },
-    {
-      number: "02",
-      title: "Sprint Zero & Prototyping",
-      description:
-        "We lock the stack, CI/CD pipeline, and data models. A high-fidelity prototype and architecture review board sign-off align every stakeholder.",
-    },
-    {
-      number: "03",
-      title: "Agile Co-Creation",
-      description:
-        "Two-week sprints with dedicated Typeble leads, open GitHub repos, and unfiltered access. Weekly demos keep decisions fast and transparent.",
-    },
-    {
-      number: "04",
-      title: "Rigorous QA & Security",
-      description:
-        "Compliance-first delivery covering SOC 2, HIPAA, GDPR, penetration testing, and automated QA—embedded from sprint zero, not bolted on.",
-    },
-    {
-      number: "05",
-      title: "Deployment & Scalable Hand-off",
-      description:
-        "We orchestrate production launch, document every system, train your team, and continue with MLOps/SRE support or hand off cleanly. You own the IP.",
-    },
-  ]
-
   return (
-    <section id="process" className="py-24 relative overflow-hidden bg-[#0a0a0a]">
-      <div className="container mx-auto px-4 md:px-8 relative z-10">
+    <section id="process" className="relative overflow-hidden bg-[#0a0a0a] py-24">
+      <div className="container relative z-10 mx-auto px-4 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -50,83 +67,41 @@ export default function Process() {
           transition={{ duration: 0.5 }}
           className="mb-16"
         >
-          <div className="flex items-center gap-4 mb-6">
-            <div className="h-px w-12 bg-white/40"></div>
+          <div className="mb-6 flex items-center gap-4">
+            <div className="h-px w-12 bg-white/40" />
             <div className="text-xs uppercase tracking-widest text-white/80">Process</div>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-white">
+          <h2 className="text-4xl font-bold tracking-tighter text-white md:text-5xl">
             Our Framework.
             <br />
             <span className="text-white/90">From Ambition to Deployment.</span>
           </h2>
         </motion.div>
 
-        <div
-          ref={ref}
-          className="relative"
-        >
-          {/* Vertical line with improved visibility */}
-          <div className="absolute left-[39px] top-0 bottom-0 w-[2px] bg-white/30 md:left-1/2"></div>
-
-          {steps.map((step, index) => (
-            <div
-              key={index}
-              className={`flex flex-col md:flex-row items-start md:items-center gap-8 mb-16 ${
-                index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-              }`}
+        <AccordionSingle defaultValue={steps[0]?.number ?? null} className="space-y-5">
+          {steps.map((step) => (
+            <AccordionItem
+              key={step.number}
+              value={step.number}
+              title={step.title}
+              eyebrow={`Step ${step.number}`}
+              description={step.description}
             >
-              <div className={`flex-1 ${index % 2 === 0 ? "md:text-right" : ""} pl-24 md:pl-0`}>
-                {/* Increase contrast of step numbers from 10% to 40% */}
-                <div className={`text-5xl md:text-7xl font-bold text-white/40 mb-4 ${index % 2 === 0 ? "md:text-right" : ""}`}>
-                  {step.number}
-                </div>
-                <h3 className={`text-2xl font-bold mb-2 text-white ${index % 2 === 0 ? "md:text-right" : ""}`}>
-                  {step.title}
-                </h3>
-                {/* Increase contrast of descriptions from 70% to 85% */}
-                <p className={`text-white/85 ${index % 2 === 0 ? "md:text-right md:ml-auto" : ""} ${
-                  index % 2 === 0 ? "md:max-w-sm md:inline-block" : "max-w-sm"
-                }`}>
-                  {step.description}
-                </p>
-              </div>
-
-              <div className="relative flex items-center justify-center z-10 absolute-vertical-center md:static">
-                {/* Increase border contrast from 30% to 40% */}
-                <div className="w-20 h-20 border-2 border-white/40 flex items-center justify-center bg-[#0a0a0a] group-hover:border-white/60 transition-all duration-300">
-                  <div className="text-xl font-bold text-white">{step.number}</div>
-                </div>
-              </div>
-
-              <div className="flex-1 hidden md:block">
-                {/* Increase horizontal line contrast from 20% to 30% */}
-                <div className="h-[2px] w-full bg-white/30"></div>
-              </div>
-            </div>
+              <ul className="space-y-3 text-white/75">
+                {step.detail.map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <span className="mt-1 h-2 w-2 flex-shrink-0 rounded-full bg-white" aria-hidden="true" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </AccordionItem>
           ))}
-        </div>
+        </AccordionSingle>
       </div>
 
-      {/* Decorative elements */}
-      <div className="absolute top-40 right-20 w-32 h-32 border border-white/10"></div>
-      <div className="absolute bottom-60 left-20 w-40 h-40 border border-white/5"></div>
-
-      {/* Add custom styles for mobile positioning */}
-      <style jsx>{`
-        .absolute-vertical-center {
-          position: absolute;
-          left: 0;
-          top: 50%;
-          transform: translateY(-50%);
-        }
-        
-        @media (min-width: 768px) {
-          .absolute-vertical-center {
-            position: static;
-            transform: none;
-          }
-        }
-      `}</style>
+      <div className="absolute top-40 right-20 h-32 w-32 border border-white/10" />
+      <div className="absolute bottom-60 left-20 h-40 w-40 border border-white/5" />
     </section>
-  )
+  );
 }

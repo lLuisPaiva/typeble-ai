@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useLanguage } from "@/components/language-provider";
+import { ScheduleDialog } from "@/components/schedule-dialog";
 import type { Language } from "@/translations";
 
 export default function Navbar() {
@@ -104,12 +105,16 @@ export default function Navbar() {
 
           <div className="hidden md:flex items-center gap-4">
             {renderLanguageButtons("desktop")}
-            <Link
-              href="#contact"
-              className="border border-white px-5 py-2 text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-colors inline-block"
-            >
-              {t.cta}
-            </Link>
+            <ScheduleDialog
+              trigger={
+                <button
+                  type="button"
+                  className="border border-white px-5 py-2 text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-colors inline-flex items-center justify-center"
+                >
+                  {t.cta}
+                </button>
+              }
+            />
           </div>
 
           <button className="md:hidden text-white" onClick={() => setIsOpen(!isOpen)}>
@@ -167,13 +172,21 @@ export default function Navbar() {
                   {renderLanguageButtons("mobile")}
                 </div>
               </div>
-              <Link
-                href="#contact"
-                className="border border-white px-5 py-3 text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-colors w-full mt-4 text-center"
-                onClick={() => setIsOpen(false)}
-              >
-                {t.cta}
-              </Link>
+              <ScheduleDialog
+                trigger={
+                  <button
+                    type="button"
+                    className="border border-white px-5 py-3 text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-colors w-full mt-4 text-center"
+                  >
+                    {t.cta}
+                  </button>
+                }
+                onOpenChange={(next) => {
+                  if (next) {
+                    setIsOpen(false);
+                  }
+                }}
+              />
             </nav>
           </div>
         </motion.div>

@@ -34,7 +34,36 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+    /* Accessibility: larger base font for readability in dark mode */
+    font-size: 1.6rem; /* ~16px baseline */
+    line-height: 1.6;
   }
+}
+
+/* Readability utilities */
+.copy {
+  font-size: 1.8rem; /* paragraphs & list items */
+  line-height: 1.7;
+  color: rgb(var(--muted-foreground));
+}
+
+.hero-subheadline {
+  font-size: 2.0rem;
+  line-height: 1.6;
+  color: rgb(var(--muted-foreground));
+}
+
+.feature-list li {
+  font-size: 1.8rem; /* larger bullets for trust */
+  line-height: 1.6;
+}
+
+.sr-only {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
 }
 
 /* Custom cursor */
